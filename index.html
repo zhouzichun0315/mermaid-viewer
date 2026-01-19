@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mermaid 流程图在线编辑器</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 顶部工具栏 -->
+        <header class="toolbar">
+            <h1 class="logo">Mermaid Editor</h1>
+            <div class="toolbar-actions">
+                <select id="templateSelect" class="template-select">
+                    <option value="">选择示例模板</option>
+                </select>
+                <button id="exportPng" class="btn btn-primary">导出 PNG</button>
+                <button id="exportSvg" class="btn btn-secondary">导出 SVG</button>
+                <button id="themeToggle" class="btn btn-icon" title="切换主题">
+                    <span class="theme-icon">🌙</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- 主内容区 -->
+        <main class="main-content">
+            <!-- 左侧代码编辑区 -->
+            <div class="editor-panel">
+                <div class="panel-header">
+                    <span>Mermaid 代码</span>
+                </div>
+                <textarea id="codeEditor" class="code-editor" placeholder="在此输入 Mermaid 代码..." spellcheck="false">graph TD
+    A[开始] --> B{是否有条件?}
+    B -->|是| C[执行操作A]
+    B -->|否| D[执行操作B]
+    C --> E[结束]
+    D --> E</textarea>
+            </div>
+
+            <!-- 右侧预览区 -->
+            <div class="preview-panel">
+                <div class="panel-header">
+                    <span>流程图预览</span>
+                </div>
+                <div id="preview" class="preview-area">
+                    <div id="mermaidOutput"></div>
+                </div>
+                <div id="errorMessage" class="error-message" style="display: none;"></div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Mermaid CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <!-- html2canvas for PNG export -->
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+    
+    <!-- 应用脚本 -->
+    <script src="js/templates.js"></script>
+    <script src="js/export.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
